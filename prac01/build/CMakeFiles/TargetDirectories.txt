@@ -1,1 +1,0 @@
-/home/yanai/Documents/ShaderSamples/prac01/build/CMakeFiles/prac01.dir
