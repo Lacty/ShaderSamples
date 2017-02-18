@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++1y -lGL -lGLU -lglfw -lX11 -lXxf86vm -lXrandr -lpthread -lXi    CMakeFiles/prac01.dir/main.cpp.o  -o prac01 -rdynamic 
