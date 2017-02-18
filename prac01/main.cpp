@@ -10,28 +10,49 @@
 
 
 int main() {
+  // inisialize glfw
   if (!glfwInit()) return -1;
   
-  auto* window = glfwCreateWindow(256, 256, "Simple Shader Sample", nullptr, nullptr);
-  if (!window) {
+  // --------------------------------------------------------------
+  // Util Funcs
+  // --------------------------------------------------------------
+  auto makeWindow = [] (int w, int h)->GLFWwindow* {
+    auto window = glfwCreateWindow(w, h, "", nullptr, nullptr);
+    if (window) {
+      glfwMakeContextCurrent(window);
+      return window;
+    }
     glfwTerminate();
-    return -1;
-  }
-  
-  glfwMakeContextCurrent(window);
-  
-  glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
-  
+    return nullptr;
+  };
+
   auto isOpen = [] (GLFWwindow* window)->bool {
     return !glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE);
   };
   
-  while(isOpen(window)) {
+  auto begin = [] ()->void {
+    glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
-    
+  };
+  
+  auto end = [] (GLFWwindow* window)->void {
     glfwSwapBuffers(window);
     glfwPollEvents();
-  }
+  };
   
+  // ---------------------------------------------------------------
+  //
+  // ---------------------------------------------------------------
+  
+  // make window with param
+  auto window = makeWindow(256, 256);
+  if (!window) return -1;
+  
+  while(isOpen(window)) {
+    begin();
+    
+    end(window);
+  }
+    
   glfwTerminate();
 }
