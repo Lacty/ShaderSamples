@@ -135,7 +135,7 @@ int main() {
   
   // vretex shader source code
   static const char* vtx_shader {
-    //"#version 110 core\n"
+    "#version 130\n"
     "varying float x, y, z;\n"
     "void main(void)\n"
     "{\n"
@@ -146,7 +146,7 @@ int main() {
   
   // fragment shader source code
   static const char* frg_shader {
-    //"#version 110 core\n"
+    "#version 130\n"
     "varying float x, y, z;\n"
     "void main() {\n"
     "  gl_FragColor = vec4(x + 0.5, y + 0.5, z + 0.5, 1.0);\n"
