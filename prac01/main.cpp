@@ -10,7 +10,6 @@
 #include <cassert>
 
 #include <GLFW/glfw3.h>
-#include <GL/glext.h>
 
 int main() {
   // inisialize glfw
@@ -48,7 +47,7 @@ int main() {
   // ---------------------------------------------------------------
   // make window width:256 height:256
   // ---------------------------------------------------------------
-  auto window = makeWindow(256, 256);
+  auto window = makeWindow(412, 412);
   if (!window) return -1;
 
   // ---------------------------------------------------------------
@@ -65,6 +64,60 @@ int main() {
   auto glBindFragDataLocation = (PFNGLBINDFRAGDATALOCATIONPROC)glfwGetProcAddress("glBindFragDataLocation");
   auto glLinkProgram          = (PFNGLLINKPROGRAMPROC)glfwGetProcAddress("glLinkProgram");
   auto glUseProgram           = (PFNGLUSEPROGRAMPROC)glfwGetProcAddress("glUseProgram");
+  auto glGetShaderiv          = (PFNGLGETSHADERIVPROC)glfwGetProcAddress("glGetShaderiv");
+  auto glGetShaderInfoLog     = (PFNGLGETSHADERINFOLOGPROC)glfwGetProcAddress("glGetShaderInfoLog");
+  auto glGetProgramiv         = (PFNGLGETPROGRAMIVPROC)glfwGetProcAddress("glGetProgramiv");
+  auto glGetProgramInfoLog    = (PFNGLGETPROGRAMINFOLOGPROC)glfwGetProcAddress("glGetProgramInfoLog");
+  
+  // シェーダオブジェクトのコンパイル結果を表示する
+  auto printShaderInfoLog = [&] (GLuint shader, const char *str)->GLboolean
+  {
+    // コンパイル結果を取得する
+    GLint status;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &status);
+    if (status == GL_FALSE) std::cerr << "Compile Error in " << str << std::endl;
+    
+    // シェーダのコンパイル時のログの長さを取得する
+    GLsizei bufSize;
+    glGetShaderiv(shader, GL_INFO_LOG_LENGTH , &bufSize);
+    
+    if (bufSize > 1)
+    {
+      // シェーダのコンパイル時のログの内容を取得する
+      GLchar *infoLog = new GLchar[bufSize];
+      GLsizei length;
+      glGetShaderInfoLog(shader, bufSize, &length, infoLog);
+      std::cerr << infoLog << std::endl;
+      delete[] infoLog;
+    }
+    
+    return (GLboolean)status;
+  };
+  
+  // プログラムオブジェクトのリンク結果を表示する
+  auto printProgramInfoLog = [&] (GLuint program)->GLboolean
+  {
+    // リンク結果を取得する
+    GLint status;
+    glGetProgramiv(program, GL_LINK_STATUS, &status);
+    if (status == GL_FALSE) std::cerr << "Link Error" << std::endl;
+    
+    // シェーダのリンク時のログの長さを取得する
+    GLsizei bufSize;
+    glGetProgramiv(program, GL_INFO_LOG_LENGTH , &bufSize);
+    
+    if (bufSize > 1)
+    {
+      // シェーダのリンク時のログの内容を取得する
+      GLchar *infoLog = new GLchar[bufSize];
+      GLsizei length;
+      glGetProgramInfoLog(program, bufSize, &length, infoLog);
+      std::cerr << infoLog << std::endl;
+      delete[] infoLog;
+    }
+    
+    return (GLboolean)status;
+  };
   
   // vtx array(rect
   static const GLfloat vtx[] = {
@@ -82,21 +135,21 @@ int main() {
   
   // vretex shader source code
   static const char* vtx_shader {
-    "#version 150 core\n"
+    //"#version 110 core\n"
     "varying float x, y, z;\n"
     "void main(void)\n"
     "{\n"
-      "gl_Position = ftransform();"
-      "x = gl_Position.x; y = gl_Position.y; z = gl_Position.z;"
+      "gl_Position = ftransform();\n"
+      "x = gl_Position.x; y = gl_Position.y; z = gl_Position.z;\n"
     "}\n"
   };
   
   // fragment shader source code
   static const char* frg_shader {
-    "#version 150 core\n"
+    //"#version 110 core\n"
     "varying float x, y, z;\n"
     "void main() {\n"
-    "  gl_FragColor = vec4(1.0, 0.0, 1.0, 1.0);\n"
+    "  gl_FragColor = vec4(x + 0.5, y + 0.5, z + 0.5, 1.0);\n"
     "}\n"
   };
 
@@ -114,6 +167,10 @@ int main() {
   // compile
   glCompileShader(vtx_s);
   glCompileShader(frg_s);
+               
+  // output err log
+  printShaderInfoLog(vtx_s, "vertex shader");
+  printShaderInfoLog(frg_s, "fragment shader");
   
   // create program obj
   auto program = glCreateProgram();
@@ -122,7 +179,10 @@ int main() {
   
   // link to OpenGL
   glLinkProgram(program);
-
+  
+  // output err log
+  printProgramInfoLog(program);
+  
   // use program obj
   glUseProgram(program);
   
