@@ -2,8 +2,24 @@
 #include <iostream>
 #include "extra.h"
 
+namespace extra_gl_func {
+PFNGLCREATESHADERPROC         glCreateShader;
+PFNGLSHADERSOURCEPROC         glShaderSource;
+PFNGLCOMPILESHADERPROC        glCompileShader;
+PFNGLCREATEPROGRAMPROC        glCreateProgram;
+PFNGLATTACHSHADERPROC         glAttachShader;
+PFNGLDELETESHADERPROC         glDeleteShader;
+PFNGLDELETEPROGRAMPROC        glDeleteProgram;
+PFNGLBINDATTRIBLOCATIONPROC   glBindAttribLocation;
+PFNGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
+PFNGLLINKPROGRAMPROC          glLinkProgram;
+PFNGLUSEPROGRAMPROC           glUseProgram;
+PFNGLGETSHADERIVPROC          glGetShaderiv;
+PFNGLGETSHADERINFOLOGPROC     glGetShaderInfoLog;
+PFNGLGETPROGRAMIVPROC         glGetProgramiv;
+PFNGLGETPROGRAMINFOLOGPROC    glGetProgramInfoLog;
 
-void extra_gl_func::InitEx() {
+void InitEx() {
   glCreateShader         = (PFNGLCREATESHADERPROC)glfwGetProcAddress("glCreateShader");
   glShaderSource         = (PFNGLSHADERSOURCEPROC)glfwGetProcAddress("glShaderSource");
   glCompileShader        = (PFNGLCOMPILESHADERPROC)glfwGetProcAddress("glCompileShader");
@@ -22,7 +38,7 @@ void extra_gl_func::InitEx() {
 }
 
 
-auto extra_gl_func::printShaderInfoLog(GLuint shader, const char *str)->GLboolean
+auto printShaderInfoLog(GLuint shader, const char *str)->GLboolean
 {
   // コンパイル結果を取得する
   GLint status;
@@ -47,7 +63,7 @@ auto extra_gl_func::printShaderInfoLog(GLuint shader, const char *str)->GLboolea
 };
 
 
-auto extra_gl_func::printProgramInfoLog(GLuint program)->GLboolean
+auto printProgramInfoLog(GLuint program)->GLboolean
 {
   // リンク結果を取得する
   GLint status;
@@ -70,3 +86,5 @@ auto extra_gl_func::printProgramInfoLog(GLuint program)->GLboolean
   
   return (GLboolean)status;
 };
+
+}

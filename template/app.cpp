@@ -20,7 +20,6 @@ App::App(int w, int h)
     std::cout << "glfwInit() : fail\n";
     exit(EXIT_FAILURE);
   }
-  extra_gl_func::InitEx();
   
   // Make Window
   // -----------------------------------------------------------------
@@ -32,6 +31,8 @@ App::App(int w, int h)
     glfwTerminate();
     exit(EXIT_FAILURE);
   }
+  
+  extra_gl_func::InitEx();
 }
  
 App::~App() {

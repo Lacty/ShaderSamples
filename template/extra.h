@@ -13,21 +13,21 @@ namespace extra_gl_func {
   // ===================================================================
   // funcs
   // ===================================================================
-  static PFNGLCREATESHADERPROC         glCreateShader;
-  static PFNGLSHADERSOURCEPROC         glShaderSource;
-  static PFNGLCOMPILESHADERPROC        glCompileShader;
-  static PFNGLCREATEPROGRAMPROC        glCreateProgram;
-  static PFNGLATTACHSHADERPROC         glAttachShader;
-  static PFNGLDELETESHADERPROC         glDeleteShader;
-  static PFNGLDELETEPROGRAMPROC        glDeleteProgram;
-  static PFNGLBINDATTRIBLOCATIONPROC   glBindAttribLocation;
-  static PFNGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
-  static PFNGLLINKPROGRAMPROC          glLinkProgram;
-  static PFNGLUSEPROGRAMPROC           glUseProgram;
-  static PFNGLGETSHADERIVPROC          glGetShaderiv;
-  static PFNGLGETSHADERINFOLOGPROC     glGetShaderInfoLog;
-  static PFNGLGETPROGRAMIVPROC         glGetProgramiv;
-  static PFNGLGETPROGRAMINFOLOGPROC    glGetProgramInfoLog;
+  extern PFNGLCREATESHADERPROC         glCreateShader;
+  extern PFNGLSHADERSOURCEPROC         glShaderSource;
+  extern PFNGLCOMPILESHADERPROC        glCompileShader;
+  extern PFNGLCREATEPROGRAMPROC        glCreateProgram;
+  extern PFNGLATTACHSHADERPROC         glAttachShader;
+  extern PFNGLDELETESHADERPROC         glDeleteShader;
+  extern PFNGLDELETEPROGRAMPROC        glDeleteProgram;
+  extern PFNGLBINDATTRIBLOCATIONPROC   glBindAttribLocation;
+  extern PFNGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
+  extern PFNGLLINKPROGRAMPROC          glLinkProgram;
+  extern PFNGLUSEPROGRAMPROC           glUseProgram;
+  extern PFNGLGETSHADERIVPROC          glGetShaderiv;
+  extern PFNGLGETSHADERINFOLOGPROC     glGetShaderInfoLog;
+  extern PFNGLGETPROGRAMIVPROC         glGetProgramiv;
+  extern PFNGLGETPROGRAMINFOLOGPROC    glGetProgramInfoLog;
   
   // it for initialize extra func
   void InitEx();

@@ -10,6 +10,7 @@
 #include <GLFW/glfw3.h>
 
 #include "extra.h"
+#include "shader.h"
 
 
 class App {

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cassert>
 #include "shader.h"
+#include "extra.h"
 
 
 Shader::Shader(const std::string& vtx_path, const std::string& frg_path) {
