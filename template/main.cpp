@@ -1,5 +1,14 @@
-#include <iostream>
+
+#include "app.h"
+
 
 int main() {
-  std::cout << "Hello World!\n";
+  App app(460, 460);
+  app.setBgColor({0.4, 0.4, 0.4, 1.0});
+  
+  while(app.isOpen()) {
+    app.begin();
+    
+    app.end();
+  }
 }
