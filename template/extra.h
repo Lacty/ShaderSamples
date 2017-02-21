@@ -31,4 +31,10 @@ namespace extra_gl_func {
   
   // it for initialize extra func
   void InitEx();
+  
+  // シェーダオブジェクトのコンパイル結果を表示する
+  auto printShaderInfoLog(GLuint shader, const char *str)->GLboolean;
+  
+  // プログラムオブジェクトのリンク結果を表示する
+  auto printProgramInfoLog(GLuint program)->GLboolean;
 }
