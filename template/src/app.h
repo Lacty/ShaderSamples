@@ -11,6 +11,7 @@
 
 #include "extra.h"
 #include "shader.h"
+#include "graphic.h"
 
 
 class App {
