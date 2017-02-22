@@ -1,8 +1,9 @@
 #version 130
 
-varying float x, y, z;
+in vec2 pos;
+out vec4 fragColor;
 
 void main(void)
 {
-  gl_FragColor = vec4(x, y, z, 1.0);
+  fragColor = vec4(pos + vec2(0.5, 0.5), 0.5, 1.0);
 }

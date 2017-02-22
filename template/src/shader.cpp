@@ -53,6 +53,10 @@ Shader::Shader(const std::string& vtx_path, const std::string& frg_path) {
   glAttachShader(m_programId, m_vtxShaderId);
   glAttachShader(m_programId, m_frgShaderId);
   
+  // bind attribute
+  glBindAttribLocation(m_programId, 0, "position");
+  glBindFragDataLocation(m_programId, 0, "fragColor");
+  
   // link to OpenGL
   glLinkProgram(m_programId);
   

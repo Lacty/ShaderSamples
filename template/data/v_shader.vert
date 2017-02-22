@@ -1,11 +1,13 @@
 #version 130
 
-varying float x, y, z;
+// 現在処理されるピクセルの位置
+in vec2 position;
+
+// fragシェーダーに渡されるデータ
+out vec2 pos;
 
 void main(void)
 {
-  gl_Position = ftransform();
-  x = gl_Position.x;
-  y = gl_Position.y;
-  z = gl_Position.z;
+  gl_Position = vec4(position, 0.0, 1.0);
+  pos = position;
 }

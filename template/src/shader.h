@@ -12,6 +12,7 @@
 
 class Shader {
 public:
+  Shader() = default;
   Shader(const std::string& vtx_path, const std::string& frg_path);
   ~Shader();
   
