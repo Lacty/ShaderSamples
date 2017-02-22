@@ -19,6 +19,15 @@ public:
   void on();
   void off();
   
+  void uniform1f(const std::string& name, const GLfloat* data);
+  void uniform2f(const std::string& name, const GLfloat* data);
+  void uniform3f(const std::string& name, const GLfloat* data);
+  void uniform4f(const std::string& name, const GLfloat* data);
+  void uniform1i(const std::string& name, const GLint*   data);
+  void uniform2i(const std::string& name, const GLint*   data);
+  void uniform3i(const std::string& name, const GLint*   data);
+  void uniform4i(const std::string& name, const GLint*   data);
+
 private:
   
   GLuint m_vtxShaderId;

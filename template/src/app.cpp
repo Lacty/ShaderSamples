@@ -12,6 +12,8 @@
 App::App(int w, int h)
 : m_width ( w )
 , m_height( h )
+, m_mouseX( 0 )
+, m_mouseY( 0 )
 , m_bgColor(1, 1, 1, 1)
 {
   // Initialize
@@ -46,6 +48,8 @@ bool App::isOpen() {
 void App::begin() {
   glClearColor(m_bgColor.r, m_bgColor.g, m_bgColor.b, m_bgColor.a);
   glClear(GL_COLOR_BUFFER_BIT);
+  
+  glfwGetCursorPos(p_window, &m_mouseX, &m_mouseY);
 }
 
 void App::end() {
@@ -55,6 +59,9 @@ void App::end() {
 
 int App::width()  const { return m_width; }
 int App::height() const { return m_height; }
+
+double App::mouseX() const { return m_mouseX; }
+double App::mouseY() const { return m_mouseY; }
 
 void App::setBgColor(color_t color) {
   m_bgColor = color;

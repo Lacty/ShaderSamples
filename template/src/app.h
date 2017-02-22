@@ -38,6 +38,10 @@ public:
   int width() const;
   int height() const;
   
+  // return mouse posision
+  double mouseX() const;
+  double mouseY() const;
+  
   void setBgColor(color_t color);
   
 private:
@@ -45,6 +49,9 @@ private:
   
   int m_width;
   int m_height;
+  
+  double m_mouseX;
+  double m_mouseY;
   
   color_t m_bgColor;
 };

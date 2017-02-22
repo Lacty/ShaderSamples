@@ -103,7 +103,6 @@ auto printShaderInfoLog(GLuint shader, const char *str)->GLboolean
   return (GLboolean)status;
 };
 
-
 auto printProgramInfoLog(GLuint program)->GLboolean
 {
   // リンク結果を取得する
