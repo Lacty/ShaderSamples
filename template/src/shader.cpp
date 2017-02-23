@@ -84,19 +84,19 @@ void Shader::uniform1f(const std::string& name, const GLfloat* data) {
 void Shader::uniform2f(const std::string& name, const GLfloat* data) {
   using namespace extra_gl_func;
   auto id = glGetUniformLocation(m_programId, name.c_str());
-  glUniform2fv(id, 2, data);
+  glUniform2fv(id, 1, data);
 }
 
 void Shader::uniform3f(const std::string& name, const GLfloat* data) {
   using namespace extra_gl_func;
   auto id = glGetUniformLocation(m_programId, name.c_str());
-  glUniform3fv(id, 3, data);
+  glUniform3fv(id, 1, data);
 }
 
 void Shader::uniform4f(const std::string& name, const GLfloat* data) {
   using namespace extra_gl_func;
   auto id = glGetUniformLocation(m_programId, name.c_str());
-  glUniform4fv(id, 4, data);
+  glUniform4fv(id, 1, data);
 }
 
 void Shader::uniform1i(const std::string& name, const GLint* data) {
@@ -108,19 +108,19 @@ void Shader::uniform1i(const std::string& name, const GLint* data) {
 void Shader::uniform2i(const std::string& name, const GLint* data) {
   using namespace extra_gl_func;
   auto id = glGetUniformLocation(m_programId, name.c_str());
-  glUniform2iv(id, 2, data);
+  glUniform2iv(id, 1, data);
 }
 
 void Shader::uniform3i(const std::string& name, const GLint* data) {
   using namespace extra_gl_func;
   auto id = glGetUniformLocation(m_programId, name.c_str());
-  glUniform3iv(id, 3, data);
+  glUniform3iv(id, 1, data);
 }
 
 void Shader::uniform4i(const std::string& name, const GLint* data) {
   using namespace extra_gl_func;
   auto id = glGetUniformLocation(m_programId, name.c_str());
-  glUniform4iv(id, 4, data);
+  glUniform4iv(id, 1, data);
 }
 
 

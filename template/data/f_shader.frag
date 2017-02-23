@@ -8,7 +8,7 @@ uniform vec2 window;
 
 void main(void)
 {
-  vec2 pos = vec2(0.0);
+  vec2 pos = mouse;
   
   vec4 color = vec4(0.0);
   

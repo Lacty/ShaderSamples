@@ -7,6 +7,8 @@
 // =====================================================================
 
 #include <iostream>
+#include <cmath>
+
 #include <GLFW/glfw3.h>
 
 #include "extra.h"

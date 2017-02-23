@@ -6,8 +6,6 @@ in vec2 position;
 // fragシェーダーに渡されるデータ
 out vec2 fragCoord;
 
-uniform vec2 window;
-
 void main(void)
 {
   gl_Position = vec4(position, 0.0, 1.0);
