@@ -1,7 +1,7 @@
 #version 130
 
-in vec2 fragCoord;
-out vec4 fragColor;
+in vec2 FragCoord;
+out vec4 FragColor;
 
 uniform vec2 mouse;
 uniform vec2 window;
@@ -12,10 +12,10 @@ void main(void)
   
   vec4 color = vec4(0.0);
   
-  float dist = length(fragCoord - pos);
+  float dist = length(FragCoord - pos);
   
-  float size = 0.06;
+  float size = 5.0;
   color += (size / dist);
   
-  fragColor = color;
+  FragColor = color;
 }
