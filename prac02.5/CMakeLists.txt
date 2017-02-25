@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(PROJECT_NAME prac03)
+set(PROJECT_NAME prac02.5)
 
 project(${PROJECT_NAME})
 

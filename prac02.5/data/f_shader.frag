@@ -14,7 +14,7 @@ void main(void)
   
   float dist = length(FragCoord - pos);
   
-  float size = 0.06;
+  float size = 5.0;
   color += (size / dist);
   
   FragColor = color;

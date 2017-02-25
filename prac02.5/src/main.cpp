@@ -17,9 +17,6 @@ int main() {
       GLfloat(app.mouseY())
     };
     
-    mouse[0] /= (app.width() * 0.5f);
-    mouse[1] /= (app.height() * 0.5f);
-    
     const GLfloat window[] = {
       GLfloat(app.width()),
       GLfloat(app.height())
@@ -28,7 +25,7 @@ int main() {
     shader.uniform2f("mouse", mouse);
     shader.uniform2f("window", window);
     
-    drawRect(0, 0, 1.9);
+    drawRect(0, 0, 340);
     
     app.end();
   }

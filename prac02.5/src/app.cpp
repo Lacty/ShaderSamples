@@ -34,6 +34,16 @@ App::App(int w, int h)
     exit(EXIT_FAILURE);
   }
   
+  // Setup Coordinate System
+  // ----------------------------------------------------------------
+  glOrtho(-width() * 0.5, width() * 0.5, -height() * 0.5, height() * 0.5, 0.0, -1.0);
+  
+  // Output System Version
+  // ----------------------------------------------------------------
+  std::cout << "\n--[ System ]----------------------" << std::endl;
+  std::cout << "OpenGL : " << glGetString(GL_VERSION) << std::endl;
+  std::cout << "GLSL   : " << glGetString(GL_SHADING_LANGUAGE_VERSION) << std::endl;
+  
   extra_gl_func::InitEx();
 }
  
